@@ -86,7 +86,10 @@ const Tasks: React.FC<TasksProps> = ({ setAuth }) => {
 
   const updateTask = async () => {
     if (!editingTask) return;
-
+    if (!editingTask.title.trim()) {
+      alert("Task title cannot be empty.");
+      return;
+    }
     try {
       await axios.put(
         `http://localhost:5000/tasks/${editingTask.taskNumber}`,
@@ -167,6 +170,7 @@ const Tasks: React.FC<TasksProps> = ({ setAuth }) => {
                       type="text"
                       value={editingTask.title}
                       onChange={(e) => setEditingTask({ ...editingTask, title: e.target.value })}
+                      required
                     />
                   ) : (
                     task.title
