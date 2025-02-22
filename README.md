@@ -149,28 +149,28 @@ curl -X POST http://localhost:5000/tasks \
    ```sh
    npx prisma migrate dev --name init
    ```
-   
+
 Testing Instructions
-1. Registering a User
+## 1. Registering a User
 1.1 Enter unmatching passwords → Displays error: "Passwords do not match"
 1.2 Enter matching passwords → Shows success alert and redirects to the login page after confirmation.
-2. Login
+## 2. Login
 2.1 Enter wrong password → Displays error: "Invalid credentials"
 2.2 Enter a non-existing username → Displays error: "Not a user, register now!"
 2.3 Enter correct username and password → Successfully logs in and navigates to the tasks page.
-3. Adding a Task
+## 3. Adding a Task
 3.1 Can add a task with a title and description.
 3.2 Can add a task with only a title (description is optional).
 3.3 Cannot add a task without a title → Displays alert "Task title cannot be empty".
-4. Editing a Task
+## 4. Editing a Task
 4.1 Edit the title and description and click save → Updates the task successfully.
 4.2 Edit the title and description and click cancel → Discards changes and keeps the original task data.
 4.3 Remove the title and try to save → Shows an alert "Task title cannot be empty" and prevents saving.
-5. Deleting a Task
+## 5. Deleting a Task
 5.1 Clicking delete shows a confirmation prompt.
 5.2 Confirming deletion removes the task from the list.
 5.3 Canceling the prompt keeps the task unchanged.
-6. Logging Out and Logging Back In
+## 6. Logging Out and Logging Back In
 6.1 Logging out redirects the user to the login page.
 6.2 Logging back in retains previously saved tasks.
 
