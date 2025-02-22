@@ -3,7 +3,10 @@
 
 ---
 
-## README.md
+## Demo video
+https://drive.google.com/file/d/14BZV86q4tvxKMYQL095ceg0urf4JQQuo/view?usp=drive_link
+
+## 1. README.md
 ```md
 # Task Management App (Full Stack)
 
@@ -192,4 +195,4 @@ Testing Instructions
 
 ---
 # Salary Expectations per month:
-## My salary expectations per month are $1600 to $2400
+## My salary expectations per month are $1600 to $2400, or $25/hr to $30/hr
