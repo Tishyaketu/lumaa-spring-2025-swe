@@ -151,4 +151,5 @@ curl -X POST http://localhost:5000/tasks \
    ```
 
 ---
-
+# Salary Expectations per month:
+## My salary expectations per month are $1600 to $2400
