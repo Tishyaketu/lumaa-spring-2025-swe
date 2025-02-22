@@ -1,5 +1,5 @@
 ### Full-Stack Task Management App - `README.md`
-Below is the plain text README.md for setting up and running both the backend and frontend.
+
 
 ---
 
