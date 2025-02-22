@@ -1,119 +1,154 @@
-# Full-Stack Coding Challenge
-
-**Deadline**: Sunday, Feb 23th 11:59 pm PST
-
----
-
-## Overview
-
-Create a “Task Management” application with **React + TypeScript** (frontend), **Node.js** (or **Nest.js**) (backend), and **PostgreSQL** (database). The application should:
-
-1. **Register** (sign up) and **Log in** (sign in) users.
-2. After logging in, allow users to:
-   - **View a list of tasks**.
-   - **Create a new task**.
-   - **Update an existing task** (e.g., mark complete, edit).
-   - **Delete a task**.
-
-Focus on **correctness**, **functionality**, and **code clarity** rather than visual design.  
-This challenge is intended to be completed within ~3 hours, so keep solutions minimal yet functional.
+### Full-Stack Task Management App - `README.md`
+Below is the plain text README.md for setting up and running both the backend and frontend.
 
 ---
 
-## Requirements
+## README.md
+```md
+# Task Management App (Full Stack)
 
-### 1. Authentication
-
-- **User Model**:
-  - `id`: Primary key
-  - `username`: Unique string
-  - `password`: Hashed string
-- **Endpoints**:
-  - `POST /auth/register` – Create a new user
-  - `POST /auth/login` – Login user, return a token (e.g., JWT)
-- **Secure the Tasks Routes**: Only authenticated users can perform task operations.  
-  - **Password Hashing**: Use `bcrypt` or another hashing library to store passwords securely.
-  - **Token Verification**: Verify the token (JWT) on each request to protected routes.
-
-### 2. Backend (Node.js or Nest.js)
-
-- **Tasks CRUD**:  
-  - `GET /tasks` – Retrieve a list of tasks (optionally filtered by user).  
-  - `POST /tasks` – Create a new task.  
-  - `PUT /tasks/:id` – Update a task (e.g., mark as complete, edit text).  
-  - `DELETE /tasks/:id` – Delete a task.
-- **Task Model**:
-  - `id`: Primary key
-  - `title`: string
-  - `description`: string (optional)
-  - `isComplete`: boolean (default `false`)
-  - _(Optional)_ `userId` to link tasks to the user who created them
-- **Database**: PostgreSQL
-  - Provide instructions/migrations to set up:
-    - `users` table (with hashed passwords)
-    - `tasks` table
-- **Setup**:
-  - `npm install` to install dependencies
-  - `npm run start` (or `npm run dev`) to run the server
-  - Document any environment variables (e.g., database connection string, JWT secret)
-
-### 3. Frontend (React + TypeScript)
-
-- **Login / Register**:
-  - Simple forms for **Register** and **Login**.
-  - Store JWT (e.g., in `localStorage`) upon successful login.
-  - If not authenticated, the user should not see the tasks page.
-- **Tasks Page**:
-  - Fetch tasks from `GET /tasks` (including auth token in headers).
-  - Display the list of tasks.
-  - Form to create a new task (`POST /tasks`).
-  - Buttons/fields to update a task (`PUT /tasks/:id`).
-  - Button to delete a task (`DELETE /tasks/:id`).
-- **Navigation**:
-  - Show `Login`/`Register` if not authenticated.
-  - Show `Logout` if authenticated.
-- **Setup**:
-  - `npm install` then `npm start` (or `npm run dev`) to run.
-  - Document how to point the frontend at the backend (e.g., `.env` file, base URL).
+A Task Management application built using:
+- Frontend: React + TypeScript
+- Backend: Node.js (Express) + TypeScript
+- Database: PostgreSQL
 
 ---
 
-## Deliverables
-
-1. **Fork the Public Repository**: **Fork** this repo into your own GitHub account.
-2. **Implement Your Solution** in the forked repository. Make sure you're README file has:
-   - Steps to set up the database (migrations, environment variables).
-   - How to run the backend.
-   - How to run the frontend.
-   - Any relevant notes on testing.
-   - Salary Expectations per month (Mandatory)
-3. **Short Video Demo**: Provide a link (in a `.md` file in your forked repo) to a brief screen recording showing:
-   - Registering a user
-   - Logging in
-   - Creating, updating, and deleting tasks
-4. **Deadline**: Submissions are due **Sunday, Feb 23th 11:59 pm PST**.
-
-> **Note**: Please keep your solution minimal. The entire project is intended to be completed in around 3 hours. Focus on core features (registration, login, tasks CRUD) rather than polished UI or extra features.
+## Features
+- User Authentication (Register, Login, Logout)
+- Task CRUD Operations (Create, Update, Delete, Mark Complete)
+- Secure API with JWT Authentication
+- PostgreSQL Database with Prisma ORM
+- Environment Variables for Configuration
 
 ---
 
-## Evaluation Criteria
+## Prerequisites
 
-1. **Functionality**  
-   - Does registration and login work correctly (with password hashing)?
-   - Are tasks protected by authentication?
-   - Does the tasks CRUD flow work end-to-end?
+Required Software:
+- Node.js (LTS) - https://nodejs.org/
+- PostgreSQL - https://www.postgresql.org/
+- npm (comes with Node.js)
 
-2. **Code Quality**  
-   - Is the code structured logically and typed in TypeScript?
-   - Are variable/function names descriptive?
+---
 
-3. **Clarity**  
-   - Is the `README.md` (in your fork) clear and detailed about setup steps?
-   - Easy to run and test?
+# Backend Setup (Node.js + Express)
 
-4. **Maintainability**  
-   - Organized logic (controllers/services, etc.)
-   - Minimal hard-coded values
+## 1. Clone the Repository
+```sh
+git clone https://github.com/Tishyaketu/lumaa-spring-2025-swe
+cd fullstack-task-manager/backend
+```
 
-Good luck, and we look forward to your submission!
+## 2. Install Backend Dependencies
+```sh
+npm install
+```
+
+## 3. Set Up Environment Variables
+Create a `.env` file in the `backend/` directory:
+```sh
+PORT=5000
+DATABASE_URL=postgresql://youruser:yourpassword@localhost:5432/taskmanager
+JWT_SECRET=your_secret_key
+```
+Replace `youruser`, `yourpassword`, and `taskmanager` with your actual PostgreSQL database credentials.  
+Use a strong `JWT_SECRET` for authentication security.
+
+---
+
+## 4. Database Setup (Migrations)
+Ensure PostgreSQL is running and execute:
+```sh
+npx prisma migrate dev --name init
+```
+This will create the required tables in the PostgreSQL database.
+
+---
+
+## 5. Run the Backend Server
+Start the backend server using:
+```sh
+npm run dev
+```
+- The API runs on `http://localhost:5000`
+- Press `CTRL+C` to stop the server.
+
+---
+
+# Frontend Setup (React + TypeScript)
+
+## 1. Clone the Repository & Navigate to Frontend
+```sh
+cd ../frontend
+```
+
+## 2. Install Frontend Dependencies
+```sh
+npm install
+```
+
+## 3. Set Up Environment Variables
+Create a `.env` file in the `frontend/` directory:
+```sh
+REACT_APP_API_URL=http://localhost:5000
+```
+Replace the API URL if the backend is deployed on a different server.
+
+---
+
+## 4. Run the Frontend
+Start the React app using:
+```sh
+npm start
+```
+- The frontend runs on `http://localhost:3000`
+- Press `CTRL+C` to stop the React server.
+
+---
+
+# API Testing (Postman / cURL)
+
+## 1. Register a User
+```sh
+curl -X POST http://localhost:5000/auth/register \
+-H "Content-Type: application/json" \
+-d '{"username": "testuser", "password": "password123",  "confirmPassword": "password123"}'
+```
+
+## 2. Login a User
+```sh
+curl -X POST http://localhost:5000/auth/login \
+-H "Content-Type: application/json" \
+-d '{"username": "testuser", "password": "password123"}'
+```
+This returns a JWT token, which should be included in requests to protected routes.
+
+## 3. Get Tasks (Authenticated)
+```sh
+curl -X GET http://localhost:5000/tasks \
+-H "Authorization: Bearer YOUR_JWT_TOKEN"
+```
+
+## 4. Create a Task
+```sh
+curl -X POST http://localhost:5000/tasks \
+-H "Authorization: Bearer YOUR_JWT_TOKEN" \
+-H "Content-Type: application/json" \
+-d '{"title": "New Task", "description": "Description of the task"}'
+```
+
+---
+
+# Notes on Testing
+1. Ensure the backend is running (`npm run dev`) before testing APIs.
+2. Use Postman, cURL, or React frontend for testing API endpoints.
+3. Check `http://localhost:5000/tasks` (backend) and `http://localhost:3000` (frontend) for correct server response.
+4. Restart the frontend if `.env` changes (`npm start` again).
+5. For database issues, rerun migrations:
+   ```sh
+   npx prisma migrate dev --name init
+   ```
+
+---
+
