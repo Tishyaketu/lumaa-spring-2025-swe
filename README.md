@@ -110,40 +110,7 @@ npm start
 
 ---
 
-# API Testing (Postman / cURL)
-
-## 1. Register a User
-```sh
-curl -X POST http://localhost:5000/auth/register \
--H "Content-Type: application/json" \
--d '{"username": "testuser", "password": "password123",  "confirmPassword": "password123"}'
-```
-
-## 2. Login a User
-```sh
-curl -X POST http://localhost:5000/auth/login \
--H "Content-Type: application/json" \
--d '{"username": "testuser", "password": "password123"}'
-```
-This returns a JWT token, which should be included in requests to protected routes.
-
-## 3. Get Tasks (Authenticated)
-```sh
-curl -X GET http://localhost:5000/tasks \
--H "Authorization: Bearer YOUR_JWT_TOKEN"
-```
-
-## 4. Create a Task
-```sh
-curl -X POST http://localhost:5000/tasks \
--H "Authorization: Bearer YOUR_JWT_TOKEN" \
--H "Content-Type: application/json" \
--d '{"title": "New Task", "description": "Description of the task"}'
-```
-
----
-
-# Notes on Testing
+# Notes on Testing UI
 1. Ensure the backend is running (`npm run dev`) before testing APIs.
 2. Use Postman, cURL, or React frontend for testing API endpoints.
 3. Check `http://localhost:5000/tasks` (backend) and `http://localhost:3000` (frontend) for correct server response.
@@ -194,5 +161,40 @@ Testing Instructions
 6.2 Logging back in retains previously saved tasks.
 
 ---
+
+
+# API Testing (Postman / cURL)
+
+## 1. Register a User
+```sh
+curl -X POST http://localhost:5000/auth/register \
+-H "Content-Type: application/json" \
+-d '{"username": "testuser", "password": "password123",  "confirmPassword": "password123"}'
+```
+
+## 2. Login a User
+```sh
+curl -X POST http://localhost:5000/auth/login \
+-H "Content-Type: application/json" \
+-d '{"username": "testuser", "password": "password123"}'
+```
+This returns a JWT token, which should be included in requests to protected routes.
+
+## 3. Get Tasks (Authenticated)
+```sh
+curl -X GET http://localhost:5000/tasks \
+-H "Authorization: Bearer YOUR_JWT_TOKEN"
+```
+
+## 4. Create a Task
+```sh
+curl -X POST http://localhost:5000/tasks \
+-H "Authorization: Bearer YOUR_JWT_TOKEN" \
+-H "Content-Type: application/json" \
+-d '{"title": "New Task", "description": "Description of the task"}'
+```
+
+---
+
 # Salary Expectations per month:
 ## My salary expectations per month are $1600 to $2400, or $25/hr to $30/hr
