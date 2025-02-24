@@ -197,4 +197,4 @@ curl -X POST http://localhost:5000/tasks \
 ---
 
 # Salary Expectations per month:
-## My salary expectations per month are $1600 to $2400, or $25/hr to $30/hr
+## My salary expectations per month are $1600 to $2400, or $25/hr to $30/hr (20 hours per week)
